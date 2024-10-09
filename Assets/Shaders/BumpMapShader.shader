@@ -15,7 +15,7 @@ Shader "Midterm/BumpMapShader"
 
         CGPROGRAM
        
-        #pragma surface surf Lambert
+        #pragma surface surf StandardSpecular
 
         sampler2D _myDiffuse;
         sampler2D _myBump;
@@ -29,7 +29,7 @@ Shader "Midterm/BumpMapShader"
             float2 uv_myBump;
         };
  
-        void surf (Input IN, inout SurfaceOutput o)
+        void surf (Input IN, inout SurfaceOutputStandardSpecular o)
         {
             o.Albedo = tex2D(_myDiffuse, IN.uv_myDiffuse).rgb;
             o.Normal = UnpackNormal(tex2D(_myBump, IN.uv_myBump));
